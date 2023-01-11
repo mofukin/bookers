@@ -16,32 +16,31 @@
 
 <h1>Books</h1>
 
-<div class="table">
-  <div class="book-th">
+<table>
 
-      <div class="th1">Title</div>
-      <div class="th2">Body</div>
-      <div class="th3"></div>
-
-  </div>
+  <tr>
+    <div class="th1"><th>title</th></div>
+    <div class="th2"><th>body</th></div>
+    <div class="th3"><th></th></div>
+  </tr>
 
   <% @books.each do |book| %>
     <div class="book-comment">
 
-      <div class="book-title"><%= book.title %></div>
+      <tr>
+        <th><%= book.title %></th>
+        <th><%= book.body %></th>
 
-      <div class="book-body"><%= book.body %></div>
-
-      <div class="CRUD">
-        <%= link_to "show", "books/#{book.id}" %>
-        <%= link_to "edit", "books/#{book.id}/edit" %>
-        <%= link_to "destroy", destroy_list_path("#{book.id}"),method: :delete, "data-confirm" => "本当に削除しますか？" %>
-      </div>
-
+        <th>
+          <%= link_to "Show", "/books/#{book.id}" %>
+          <%= link_to "Edit", "/books/#{book.id}/edit" %>
+          <%= link_to "Destroy", destroy_list_path(book.id),method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        </th>
+      </tr>
     </div>
   <% end %>
 
-</div>
+</table>
 
 <div class="new">
   <h2>New book</h2>
@@ -56,23 +55,3 @@
   <%=f.submit 'Create Book' %>
   <% end %>
 </div>
-
-<!--
-<h1>Books</h1>
-
-<p>Title  Body</p>
-
-
- @books.each do |book| %>
-
-
-  <span>
-     link_to book.title, list_path(book.id) %>
-  </span>
-
-  <span>
-     book.body %><br>
-  </span>
-
- end %>
- -->

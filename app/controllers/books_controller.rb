@@ -32,12 +32,12 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    if book.update(book_params)
-      redirect_to list_path(book.id)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to list_path(@book.id)
       flash[:notice] = "successfully"
     else
-      @book = Book.find(params[:id])
+
       render :edit
     end
 

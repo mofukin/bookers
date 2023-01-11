@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get 'books/:id' => 'books#show', as: 'list'
   get 'books/:id/edit' => 'books#edit', as: 'edit_list'
   patch 'books/:id' => 'books#update', as: 'update_list'
-  delete 'books/:id' => 'books#destroy' , as: 'destroy_list'
+  delete '/books/:id' => 'books#destroy' , as: 'destroy_list'
   root to: 'homes#homes'
 end
