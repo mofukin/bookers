@@ -1,0 +1,78 @@
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
+
+<div class="error">
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+
+<h1>Books</h1>
+
+<div class="table">
+  <div class="book-th">
+
+      <div class="th1">Title</div>
+      <div class="th2">Body</div>
+      <div class="th3"></div>
+
+  </div>
+
+  <% @books.each do |book| %>
+    <div class="book-comment">
+
+      <div class="book-title"><%= book.title %></div>
+
+      <div class="book-body"><%= book.body %></div>
+
+      <div class="CRUD">
+        <%= link_to "show", "books/#{book.id}" %>
+        <%= link_to "edit", "books/#{book.id}/edit" %>
+        <%= link_to "destroy", destroy_list_path("#{book.id}"),method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>
+
+<div class="new">
+  <h2>New book</h2>
+
+
+  <%= form_with model: @book, url: '/books', method: :post do |f| %>
+    title<br>
+  <%= f.text_field :title %><br>
+    body<br>
+  <%= f.text_area :body %><br>
+
+  <%=f.submit 'Create Book' %>
+  <% end %>
+</div>
+
+<!--
+<h1>Books</h1>
+
+<p>Title  Body</p>
+
+
+ @books.each do |book| %>
+
+
+  <span>
+     link_to book.title, list_path(book.id) %>
+  </span>
+
+  <span>
+     book.body %><br>
+  </span>
+
+ end %>
+ -->
